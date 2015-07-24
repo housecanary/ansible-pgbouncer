@@ -7,7 +7,7 @@
 
 [databases]
 {% for alias in pgbouncer_aliases %}
-{{ alias.name }} = host={{ alias.host }} port={{ alias.port }} dbname={{ alias.db_name }}
+{{ alias.name }} = host={{ alias.host }} port={{ alias.port }} {% if alias.user is defined %}user={{ alias.user }}{% endif %} {% if alias.password is defined %}password={{ alias.password }}{% endif %} dbname={{ alias.db_name }}
 {% endfor %}
 * = host={{ pgbouncer_database_host }} port={{ pgbouncer_database_port }}
 

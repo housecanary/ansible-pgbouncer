@@ -50,8 +50,8 @@
 
 - name: set postgres ulimits
   template:
-    src: limits.d/postgresql.conf
-    dest: /etc/security/limits.d/postgresql.conf
+    src: limits.d/postgres.conf
+    dest: /etc/security/limits.d/postgres.conf
     mode: 644
   notify:
     - restart pgbouncer

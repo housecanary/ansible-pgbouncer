@@ -42,15 +42,17 @@
 
 - name: Update /etc/pam.d/su file
   sudo: yes
-    lineinfile: dest=/etc/pam.d/su
-                regexp="^session    required   pam_limits.so"
-                insertafter='^# session    required   pam_limits.so'
-                line="session    required   pam_limits.so"
-                state=present
+  lineinfile: dest=/etc/pam.d/su
+              regexp="^session    required   pam_limits.so"
+              insertafter='^# session    required   pam_limits.so'
+              line="session    required   pam_limits.so"
+              state=present
 
-- name: copy sysctl
+- name: set postgres ulimits
   template:
     src: limits.d/postgresql.conf
     dest: /etc/security/limits.d/postgresql.conf
-  mode: 644
+    mode: 644
+  notify:
+    - restart pgbouncer
 

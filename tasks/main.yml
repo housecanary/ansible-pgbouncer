@@ -40,19 +40,3 @@
   when: newrelic_license_key is defined
   tags: pgbouncer
 
-- name: Update /etc/pam.d/su file
-  sudo: yes
-  lineinfile: dest=/etc/pam.d/su
-              regexp="^session    required   pam_limits.so"
-              insertafter='^# session    required   pam_limits.so'
-              line="session    required   pam_limits.so"
-              state=present
-
-- name: set postgres ulimits
-  template:
-    src: limits.d/postgres.conf
-    dest: /etc/security/limits.d/postgres.conf
-    mode: 644
-  notify:
-    - restart pgbouncer
-

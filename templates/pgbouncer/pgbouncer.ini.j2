@@ -130,11 +130,11 @@ log_pooler_errors = {{ pgbouncer.config.log_pooler_errors }}
 ;;;
 
 ;; Close server connection if its been connected longer.
-;server_lifetime = 1200
+server_lifetime = {{ pgbouncer.config.server_lifetime }}
 
 ;; Close server connection if its not been used in this time.
 ;; Allows to clean unneccessary connections from pool after peak.
-;server_idle_timeout = 60
+server_idle_timeout = {{ pgbouncer.config.server_idle_timeout }}
 
 ;; Cancel connection attepmt if server does not answer takes longer.
 ;server_connect_timeout = 15
@@ -170,10 +170,10 @@ log_pooler_errors = {{ pgbouncer.config.log_pooler_errors }}
 ;;;
 
 ;; buffer for streaming packets
-;pkt_buf = 2048
+pkt_buf = {{ pgbouncer.config.pkt_buf }}
 
 ;; man 2 listen
-;listen_backlog = 128
+listen_backlog = {{ pgbouncer.config.listen_backlog }}
 
 ;; networking options, for info: man 7 tcp
 
@@ -202,4 +202,4 @@ log_pooler_errors = {{ pgbouncer.config.log_pooler_errors }}
 ;tcp_keepintvl = 0
 
 ;; DNS lookup caching time
-;dns_max_ttl = 15
+dns_max_ttl = {{ pgbouncer.config.dns_max_ttl }}

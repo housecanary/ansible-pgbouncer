@@ -26,6 +26,12 @@ pgbouncer:
     log_disconnections: 1
     log_pooler_errors: 1
 
+    server_idle_timeout: 600
+    server_lifetime: 1200
+    pkt_buf: 2048
+    listen_backlog: 128
+    dns_max_ttl: 15
+
 pgbouncer_users:
   - postgres
 

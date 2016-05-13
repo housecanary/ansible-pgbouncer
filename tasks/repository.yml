@@ -6,7 +6,9 @@
     - apt
 
 - name: Add repository key
-  apt_key: data="{{ lookup('file', 'ACCC4CF8.asc') }}"  state=present
+  apt_key:
+    keyserver: keys.gnupg.net
+    id: ACCC4CF8
   tags:
     - apt
 

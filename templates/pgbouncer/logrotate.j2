@@ -1,4 +1,5 @@
 /var/log/postgresql/*.log {
+    su root syslog
     {{ pgbouncer.config.log_rotate_retain_period }}
     rotate {{ pgbouncer.config.log_rotate_retain_count }}
     copytruncate
